@@ -1,7 +1,7 @@
 {
   "name": "ternium_chatboot",
   "version": "1.0.0",
-  "description": "",
+  "description": "Ternium_Chatboot",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
@@ -10,5 +10,13 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thiago092/ternium_chatboot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/thiago092/ternium_chatboot/issues"
+  },
+  "homepage": "https://github.com/thiago092/ternium_chatboot#readme"
 }
