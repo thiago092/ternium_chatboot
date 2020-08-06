@@ -7,6 +7,7 @@ var app = express(); // here I use the express() method, instead of the createSe
 app.use(bodyParser.json());
 
 require('./routes/dialogFlowRoutes')(app);
+require('./routes/fulfillmentRoutes')(app);
 
 
 
