@@ -1,23 +1,44 @@
 const {WebhookClient} = require('dialogflow-fulfillment');
 
+const mongoose = require('mongoose');
+
+const Coupon = mongoose.model('coupon');
+
 
 
 module.exports = app => {
+  
+  
     app.post('/', async (req, res) => {
         const agent = new WebhookClient({ request: req, response: res });
+        var number =100;
+       
+        
+        async function snoopy(agent) {
 
-        function snoopy(agent) {
-            agent.add(`Welcome to my Snoopy fulfillment!`);
-        }
+          
 
-        function fallback(agent) {
-            agent.add(`I didn't understand`);
-            agent.add(`I'm sorry, can you try again?`);
+            let coupon = await Coupon.findOne({'courses': agent.parameters.course});
+            console.log(coupon);
+            console.log(agent.parameters.course);
+          
+          
+            responseText = `You want to learn about ${agent.parameters.course}. 
+            Here is a link to the course: ${coupon.courses}`;
+            
+
+            agent.add(responseText);
+
+           
+            
+            
         }
+       
+       
+
         let intentMap = new Map();
+        
         intentMap.set('snoopy', snoopy);
-
-        intentMap.set('Default Fallback Intent', fallback);
 
         agent.handleRequest(intentMap);
     });
